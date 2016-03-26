@@ -1,0 +1,11 @@
+<div class="items-container">
+  <% @item.each do |item| %>
+    <div class="menu-items">
+    <%= item.name %><br>
+    <%= item.cuisine_type %><br>
+    <%= item.price %>
+    <%= link_to "Remove Item", item_path(item.id), :method => :delete %>
+    <%= link_to "Edit Item", edit_item_path(item.id) %>
+    </div>
+  <% end %>
+</div>

@@ -15,7 +15,7 @@
         <%= link_to "#{User.find(session[:current_user_id]).username}", user_path(session[:current_user_id]) %>
         <%= link_to "Logout", sessions_path, method: :delete %>
       <% else %>
-        <p>Sign In Dawg</p>
+        <p>Sign In</p>
         <%= form_tag(sessions_path) do %>
         <%= label_tag :username %>
         <%= text_field_tag :username %>
@@ -25,6 +25,8 @@
         <br>
         <%= submit_tag "Login" %>
         <% end %>
+        <p>Not a member yet?</p>
+        <%= link_to "Sign up","/users/new" %>
       <% end %>
     <div>
   </nav>
