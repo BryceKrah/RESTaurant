@@ -1,0 +1,19 @@
+<div class="form">
+  <%= form_for @user do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %> <br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %> <br>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %> <br>
+
+  <%= f.label :role %>
+  <%= f.text_field :role %><br>
+
+  <%= f.submit "Sign Up" %>
+
+  <% end %>
+</div>
