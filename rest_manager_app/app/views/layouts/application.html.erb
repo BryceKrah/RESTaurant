@@ -7,6 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar">
+    <h1>RESTaurant Manager App</h1>
+    <div class="login">
+      <% if session[:current_user_id] %>
+        <h1>Welcome!</h1>
+        <%= link_to "#{User.find(session[:current_user_id]).username}", user_path(session[:current_user_id]) %>
+        <%= link_to "Logout", sessions_path, method: :delete %>
+      <% else %>
+        <p>Sign In Dawg</p>
+        <%= form_tag(sessions_path) do %>
+        <%= label_tag :username %>
+        <%= text_field_tag :username %>
+        <br>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+        <br>
+        <%= submit_tag "Login" %>
+        <% end %>
+      <% end %>
+    <div>
+  </nav>
 
 <%= yield %>
 
