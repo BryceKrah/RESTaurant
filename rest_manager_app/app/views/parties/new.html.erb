@@ -1,0 +1,17 @@
+<div class="form">
+
+  <%= form_for @party do |f| %>
+
+  <%= f.label :table_number %>
+  <%= f.number_field :table_number %> <br>
+
+  <%= f.label :guests %>
+  <%= f.number_field :guests %> <br>
+
+  <%= f.label :order_id %>
+  <%= f.number_field :order_id? %> <br>
+
+  <%= f.submit "Add Party" %>
+
+  <% end %>
+</div>
