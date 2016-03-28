@@ -16,40 +16,30 @@ ActiveRecord::Schema.define(version: 20160327212111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Items_Orders", id: false, force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "item_id",  null: false
-  end
-
-  add_index "Items_Orders", ["item_id", "order_id"], name: "index_Items_Orders_on_item_id_and_order_id", using: :btree
-  add_index "Items_Orders", ["order_id", "item_id"], name: "index_Items_Orders_on_order_id_and_item_id", using: :btree
-
-  create_table "Orders_Parties", id: false, force: :cascade do |t|
-    t.integer "party_id", null: false
-    t.integer "order_id", null: false
-  end
-
-  add_index "Orders_Parties", ["order_id", "party_id"], name: "index_Orders_Parties_on_order_id_and_party_id", using: :btree
-  add_index "Orders_Parties", ["party_id", "order_id"], name: "index_Orders_Parties_on_party_id_and_order_id", using: :btree
-
   create_table "items", force: :cascade do |t|
     t.string  "name"
     t.string  "cuisine_type"
     t.integer "price"
   end
 
+  create_table "items_orders", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "item_id",  null: false
+  end
+
+  add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
+  add_index "items_orders", ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "party_id"
-    t.integer  "item_id"
-    t.boolean  "paid?"
+    t.boolean  "paid?",      default: false
   end
 
   create_table "parties", force: :cascade do |t|
-    t.integer "table_number"
+    t.string  "party_name"
     t.integer "guests"
-    t.boolean "paid?",        default: false
   end
 
   create_table "users", force: :cascade do |t|

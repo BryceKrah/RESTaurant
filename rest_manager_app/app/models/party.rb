@@ -1,3 +1,3 @@
 class Party < ActiveRecord::Base
-  has_many :orders, dependent: :destroy
+  has_one :order, dependent: :destroy
 end

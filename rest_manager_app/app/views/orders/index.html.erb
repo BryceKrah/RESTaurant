@@ -1,23 +1,13 @@
 <div>
-
-
   <% @orders.each do |order| %>
-      <% @items.each do |item| %>
-      <div class="row">
-        <div class="seven columns">
-            <h5>
-            <% if (order.item_id == item.id) %>
-              Order: <%= order.party_id %> <br>
-              Item: <%= item.name %><br />
-              Price: $<%= item.price %><br />
-            </h5>
-              <button><%= link_to "Delete", order_path(order)  %></button>
-            <br />
-            <% end %>
+    <h1>Order: <%= order.party_id %></h1>
+      <% order.items.each do |item| %>
+        <div>
+          Item: <%= item.name %><br />
+          Price: $<%= item.price %><br />
         </div>
-      </div>
       <% end %>
-  <% end %>
-
-
+      <button><%= link_to "Delete", order_path(order), :method => :delete %></button>
+    <br />
+    <% end %>
 </div>

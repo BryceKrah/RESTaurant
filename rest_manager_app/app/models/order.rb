@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  has_many :items
-  belongs_to :parties
+  has_and_belongs_to_many :items
+  has_one :party
 
 end

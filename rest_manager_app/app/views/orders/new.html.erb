@@ -3,14 +3,13 @@
 <%= form_for @order do |f| %>
 
   <%= f.label :item %>
-  <%= collection_select(:order, :item_id, @items, :id, :name) %>
-
+  <%= collection_select(:item, :item_id, @items, :id, :name, {}, {multiple: true}) %>
+<br>
+<br>
   <%= f.label :party %>
-  <%= collection_select(:order, :party_id, @parties, :id, :table_number) %>
-
-  <%= f.label :completed_true_or_false %>
-  <%= f.text_field :paid? %><br />
-
+  <%= collection_select(:order, :party_id, @parties, :id, :party_name) %>
+<br>
+<br>
   <%= f.submit %>
 
 <% end %>

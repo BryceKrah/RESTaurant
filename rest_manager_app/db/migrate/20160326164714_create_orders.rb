@@ -3,8 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.timestamps
       t.references :party
-      t.references :item
-      t.boolean :paid?
+      t.boolean :paid?, :default => false
     end
   end
 end

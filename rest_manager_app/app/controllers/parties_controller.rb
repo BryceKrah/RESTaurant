@@ -1,7 +1,7 @@
 class PartiesController < ApplicationController
 
   def index
-    @party = Party.all
+    @party = Party.order(:id)
   end
 
   def new
@@ -36,7 +36,7 @@ class PartiesController < ApplicationController
 private
 
   def party_params
-    params.require(:party).permit(:table_number, :guests, :paid?, :order_id)
+    params.require(:party).permit(:party_name, :guests, :order_id)
   end
 
 
