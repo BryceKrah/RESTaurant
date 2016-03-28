@@ -1,0 +1,23 @@
+<div>
+
+
+  <% @orders.each do |order| %>
+      <% @items.each do |item| %>
+      <div class="row">
+        <div class="seven columns">
+            <h5>
+            <% if (order.item_id == item.id) %>
+              Order: <%= order.party_id %> <br>
+              Item: <%= item.name %><br />
+              Price: $<%= item.price %><br />
+            </h5>
+              <button><%= link_to "Delete", order_path(order)  %></button>
+            <br />
+            <% end %>
+        </div>
+      </div>
+      <% end %>
+  <% end %>
+
+
+</div>

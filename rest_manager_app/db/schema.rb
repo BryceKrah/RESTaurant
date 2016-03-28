@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327201502) do
+ActiveRecord::Schema.define(version: 20160327212111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Items_Orders", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "item_id",  null: false
+  end
+
+  add_index "Items_Orders", ["item_id", "order_id"], name: "index_Items_Orders_on_item_id_and_order_id", using: :btree
+  add_index "Items_Orders", ["order_id", "item_id"], name: "index_Items_Orders_on_order_id_and_item_id", using: :btree
 
   create_table "Orders_Parties", id: false, force: :cascade do |t|
     t.integer "party_id", null: false
@@ -33,13 +41,15 @@ ActiveRecord::Schema.define(version: 20160327201502) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "party_id"
+    t.integer  "item_id"
+    t.boolean  "paid?"
   end
 
   create_table "parties", force: :cascade do |t|
     t.integer "table_number"
     t.integer "guests"
     t.boolean "paid?",        default: false
-    t.integer "order_id"
   end
 
   create_table "users", force: :cascade do |t|

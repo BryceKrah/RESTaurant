@@ -8,7 +8,13 @@
   <%= f.label :guests %>
   <%= f.number_field :guests %> <br>
 
-  <%= f.submit "Add Party" %>
+  <%= f.label :paid %>
+  <%= f.check_box :paid?, {}, true, false %> <br>
+
+  <%= f.label :order_id %>
+  <%= f.number_field :order_id? %> <br>
+
+  <%= f.submit "Edit Party" %>
 
   <% end %>
 </div>

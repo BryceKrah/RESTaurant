@@ -1,3 +1,12 @@
-<div>
-  YOOOO its a Party
+<div class="parties-container">
+  <% @party.each do |party| %>
+    <div class="menu-items">
+    <%= party.table_number %><br>
+    <%= party.guests %><br>
+    <%= party.paid? %>
+    <%= link_to "Remove Party", party_path(party.id), :method => :delete %>
+    <%= link_to "Edit Party", edit_party_path(party.id) %>
+    <%= link_to "Add Order", new_order_path(party.id) %>
+    </div>
+  <% end %>
 </div>

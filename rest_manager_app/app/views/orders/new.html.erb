@@ -1,0 +1,16 @@
+<h4>Order Form</h4>
+
+<%= form_for @order do |f| %>
+
+  <%= f.label :item %>
+  <%= collection_select(:order, :item_id, @items, :id, :name) %>
+
+  <%= f.label :party %>
+  <%= collection_select(:order, :party_id, @parties, :id, :table_number) %>
+
+  <%= f.label :completed_true_or_false %>
+  <%= f.text_field :paid? %><br />
+
+  <%= f.submit %>
+
+<% end %>
